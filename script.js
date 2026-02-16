@@ -9,3 +9,14 @@ function getProfileData(username){
     return raw.json();
     });
 }
+
+//getting no.of repositories
+
+function getRepos(username){
+    return fetch(
+        `https://api.github.com/users/${username}/repos?sort=updated`).then((raw)=>{
+            if(!raw.ok) throw new Error("Failed to fetch repos..");
+            return raw.json();
+        });
+    
+}
